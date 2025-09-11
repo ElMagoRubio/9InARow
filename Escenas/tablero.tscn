@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtrjwu84kxkdt"]
 
-[ext_resource type="Script" path="res://Scripts/tablero.gd" id="1_0j1g2"]
+[ext_resource type="Script" uid="uid://pxfs2wwtc81t" path="res://Scripts/tablero.gd" id="1_0j1g2"]
 [ext_resource type="Texture2D" uid="uid://cdvgs8vbth3rw" path="res://Assets/Tiles/original/libre.png" id="2_uwcw6"]
 
 [node name="Tablero" type="Control"]

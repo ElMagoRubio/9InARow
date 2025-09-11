@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Nuevo Proyecto De Juego"
 run/main_scene="res://Escenas/menu_principal.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,3 +22,12 @@ VarGlobales="*res://Scripts/var_globales.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Nuevo Proyecto De Juego"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

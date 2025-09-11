@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bw7vqxpdbh4c6"]
 
 [ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="1_gyt1b"]
-[ext_resource type="Script" path="res://Scripts/juego.gd" id="1_h2eya"]
+[ext_resource type="Script" uid="uid://3buhsa1po1b4" path="res://Scripts/juego.gd" id="1_h2eya"]
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/tema_menu.tres" id="1_nne6g"]
 [ext_resource type="Texture2D" uid="uid://b1pdvqixu1nc3" path="res://Assets/pausa.png" id="2_rnqnk"]
 [ext_resource type="FontFile" uid="uid://dlvmd7pgj858b" path="res://Assets/Kenney Pixel.ttf" id="3_rsg1s"]
@@ -40,7 +40,6 @@ grow_vertical = 2
 theme = SubResource("Theme_4uf4y")
 
 [node name="general" type="VBoxContainer" parent="menu_pausa"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,18 +76,15 @@ text = "Nueva partida"
 layout_mode = 2
 text = "Guardar partida"
 
-[node name="Confirmacion" type="Label" parent="menu_pausa/general/botones/guardar"]
-visible = false
-layout_mode = 0
-offset_left = 166.5
-offset_top = 5.0
-offset_right = 297.5
-offset_bottom = 28.0
-text = "Partida guardada"
-
 [node name="salir" type="Button" parent="menu_pausa/general/botones"]
 layout_mode = 2
 text = "Ir al menú principal"
+
+[node name="confirmacion" type="Label" parent="menu_pausa/general/botones"]
+layout_mode = 2
+text = "Partida guardada"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="conf_salida" type="VBoxContainer" parent="menu_pausa/general"]
 visible = false
@@ -121,12 +117,15 @@ text = "Cancelar"
 [node name="pausa" type="Button" parent="menu_pausa"]
 process_mode = 1
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 49.0
+offset_bottom = 49.0
 icon = ExtResource("2_rnqnk")
 expand_icon = true
 
 [node name="TablerosJuego" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.062
@@ -215,7 +214,8 @@ anchor_left = 0.715278
 anchor_top = 0.0740741
 anchor_right = 0.826389
 anchor_bottom = 0.148148
-scale = Vector2(1.83689, 1.83689)
+offset_right = -128.0
+offset_bottom = -47.9999
 
 [node name="Audio_partida" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_mslk0")

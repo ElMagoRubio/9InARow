@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://yk8lloe05yne"]
 
 [ext_resource type="FontFile" uid="uid://dlvmd7pgj858b" path="res://Assets/Kenney Pixel.ttf" id="1_bbaty"]
-[ext_resource type="Script" path="res://Scripts/tablero_final.gd" id="1_euv88"]
+[ext_resource type="Script" uid="uid://c62t7qm2mnhuq" path="res://Scripts/tablero_final.gd" id="1_euv88"]
 [ext_resource type="Texture2D" uid="uid://cdvgs8vbth3rw" path="res://Assets/Tiles/original/libre.png" id="3_b8jmh"]
 
 [sub_resource type="Theme" id="Theme_30pxf"]
@@ -83,12 +83,12 @@ layout_mode = 2
 texture_normal = ExtResource("3_b8jmh")
 stretch_mode = 0
 
-[connection signal="button_up" from="tablero_base/Fila0/Casilla0" to="." method="_on_casilla_0_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila0/Casilla1" to="." method="_on_casilla_1_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila0/Casilla2" to="." method="_on_casilla_2_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila1/Casilla3" to="." method="_on_casilla_3_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila1/Casilla4" to="." method="_on_casilla_4_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila1/Casilla5" to="." method="_on_casilla_5_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila2/Casilla6" to="." method="_on_casilla_6_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila2/Casilla7" to="." method="_on_casilla_7_button_up" flags=18]
-[connection signal="button_up" from="tablero_base/Fila2/Casilla8" to="." method="_on_casilla_8_button_up" flags=18]
+[connection signal="button_up" from="tablero_base/Fila0/Casilla0" to="." method="_on_casilla_0_button_up"]
+[connection signal="button_up" from="tablero_base/Fila0/Casilla1" to="." method="_on_casilla_1_button_up"]
+[connection signal="button_up" from="tablero_base/Fila0/Casilla2" to="." method="_on_casilla_2_button_up"]
+[connection signal="button_up" from="tablero_base/Fila1/Casilla3" to="." method="_on_casilla_3_button_up"]
+[connection signal="button_up" from="tablero_base/Fila1/Casilla4" to="." method="_on_casilla_4_button_up"]
+[connection signal="button_up" from="tablero_base/Fila1/Casilla5" to="." method="_on_casilla_5_button_up"]
+[connection signal="button_up" from="tablero_base/Fila2/Casilla6" to="." method="_on_casilla_6_button_up"]
+[connection signal="button_up" from="tablero_base/Fila2/Casilla7" to="." method="_on_casilla_7_button_up"]
+[connection signal="button_up" from="tablero_base/Fila2/Casilla8" to="." method="_on_casilla_8_button_up"]

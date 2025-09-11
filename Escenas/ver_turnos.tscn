@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://drgmikksr2el2"]
+[gd_scene load_steps=3 format=3 uid="uid://drgmikksr2el2"]
 
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/tema_menu.tres" id="1_f2pa7"]
-[ext_resource type="Script" path="res://Scripts/ver_turnos.gd" id="2_15gbu"]
-[ext_resource type="Texture2D" uid="uid://ct12m6c4lg8su" path="res://Assets/libre.png" id="3_hkb4e"]
+[ext_resource type="Script" uid="uid://cmaotjn3x6xkq" path="res://Scripts/ver_turnos.gd" id="2_15gbu"]
 
 [node name="ver_turnos" type="Control"]
 layout_mode = 3
@@ -23,10 +22,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "TURNO DE: "
+theme_override_font_sizes/font_size = 72
+text = "TURNO: "
 
 [node name="Casilla0" type="TextureButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture_normal = ExtResource("3_hkb4e")
 stretch_mode = 0

@@ -41,7 +41,7 @@ func _menu_pausa_visibilidad(pausado : bool):
 func _on_guardar_pressed():
 	save()
 	VarGlobales.guardado = true
-	$menu_pausa/general/botones/guardar/Confirmacion.visible = true
+	$menu_pausa/general/botones/confirmacion.visible = true
 
 		
 func save():
@@ -77,4 +77,3 @@ func save():
 	save_ajustes.close()
 	
 		
-
