@@ -186,4 +186,3 @@ func _on_nuevapartida_pressed():
 
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://Escenas/menu_principal.tscn")
-

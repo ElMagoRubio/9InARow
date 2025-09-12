@@ -40,6 +40,7 @@ grow_vertical = 2
 theme = SubResource("Theme_4uf4y")
 
 [node name="general" type="VBoxContainer" parent="menu_pausa"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,6 +82,7 @@ layout_mode = 2
 text = "Ir al menú principal"
 
 [node name="confirmacion" type="Label" parent="menu_pausa/general/botones"]
+visible = false
 layout_mode = 2
 text = "Partida guardada"
 horizontal_alignment = 1
@@ -125,7 +127,6 @@ icon = ExtResource("2_rnqnk")
 expand_icon = true
 
 [node name="TablerosJuego" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.062
