@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Nuevo Proyecto De Juego"
-run/main_scene="res://Escenas/menu_principal.tscn"
+run/main_scene="uid://2ehk4vahbam7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -7,13 +7,6 @@ func _ready():
 	pass
 
 
-func _on_full_screen_toggled(button_pressed):
-	if button_pressed == true:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-
 func _on_volumen_value_changed(value):
 	AudioServer.set_bus_volume_db(master_bus, value)
 	
@@ -24,7 +17,8 @@ func _on_volumen_value_changed(value):
 
 func _on_accesibilidad_pressed():
 	$VBoxContainer.visible = false
-	$Custom.visible = true
+	$VolumenLabel.visible = false
+	$CustomLayout.visible = true
 
 
 func _on_volver_pressed():
@@ -80,7 +74,7 @@ func _on_o_3_pressed():
 
 func _on_volver_2_pressed():
 	$AjustesTexturas.visible = false
-	$Custom.visible = true
+	$CustomLayout.visible = true
 
 func _on_original_toggled(button_pressed):
 	if button_pressed == true:
@@ -90,8 +84,8 @@ func _on_original_toggled(button_pressed):
 		VarGlobales.load_files("o_d", "res://Assets/Tiles/original/o_disabled.png")
 		VarGlobales.load_files("l", "res://Assets/Tiles/original/libre.png")
 		VarGlobales.load_files("l_d", "res://Assets/Tiles/original/libre_disabled.png")
-		$Custom/Princesa/princesa.button_pressed = false
-		$Custom/Daltonicos/daltonicos.button_pressed = false
+		$CustomLayout/Custom/Princesa/princesa.button_pressed = false
+		$CustomLayout/Custom/Daltonicos/daltonicos.button_pressed = false
 
 
 func _on_princesa_toggled(button_pressed):
@@ -102,8 +96,8 @@ func _on_princesa_toggled(button_pressed):
 		VarGlobales.load_files("o_d", "res://Assets/Tiles/princesa/o_disabled.png")
 		VarGlobales.load_files("l", "res://Assets/Tiles/princesa/libre.png")
 		VarGlobales.load_files("l_d", "res://Assets/Tiles/princesa/libre_disabled.png")
-		$Custom/Original/original.button_pressed = false
-		$Custom/Daltonicos/daltonicos.button_pressed = false
+		$CustomLayout/Custom/Original/original.button_pressed = false
+		$CustomLayout/Custom/Daltonicos/daltonicos.button_pressed = false
 
 
 func _on_daltonicos_toggled(button_pressed):
@@ -114,19 +108,27 @@ func _on_daltonicos_toggled(button_pressed):
 		VarGlobales.load_files("o_d", "res://Assets/Tiles/daltonicos/o_disabled.png")
 		VarGlobales.load_files("l", "res://Assets/Tiles/daltonicos/libre.png")
 		VarGlobales.load_files("l_d", "res://Assets/Tiles/daltonicos/libre_disabled.png")
-		$Custom/Original/original.button_pressed = false
-		$Custom/Princesa/princesa.button_pressed = false
+		$CustomLayout/Custom/Original/original.button_pressed = false
+		$CustomLayout/Custom/Princesa/princesa.button_pressed = false
 		
 
 
 
 func _on_ir_a_personalizado_pressed():
-	$Custom.visible = false
+	$CustomLayout.visible = false
 	$AjustesTexturas.visible = true
 	$AjustesTexturas/CasillasJugadores/O/TexturaO.texture_normal = VarGlobales.jugador_o
 	$AjustesTexturas/CasillasJugadores/X/TexturaX.texture_normal = VarGlobales.jugador_x
 
 
 func _on_volver_3_pressed():
-	$Custom.visible = false
+	$CustomLayout.visible = false
 	$VBoxContainer.visible = true
+	$VolumenLabel.visible = true
+
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

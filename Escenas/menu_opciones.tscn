@@ -67,6 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q20sj")
 script = ExtResource("1_xpu8d")
+metadata/_edit_vertical_guides_ = [576.0]
 
 [node name="BackgroundFondo" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -84,7 +85,8 @@ offset_top = 70.0
 offset_right = 92.5
 offset_bottom = 100.0
 grow_horizontal = 2
-text = "CONFIGURACIÓN"
+text = "AJUSTES"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -99,24 +101,15 @@ offset_right = 202.0
 offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_q20sj")
 
-[node name="FullScreen" type="CheckButton" parent="VBoxContainer"]
+[node name="Fullscreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+toggle_mode = true
 text = "PANTALLA COMPLETA"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Volumen" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "VOLUMEN"
-
-[node name="Volumen" type="HScrollBar" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = -30.0
-max_value = 0.0
 
 [node name="Accesibilidad" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -135,171 +128,208 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_7q3c
 theme_override_styles/hover = SubResource("StyleBoxTexture_bqy0r")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_q5iuc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_bo4l0")
-text = "VOLVER AL MENÚ "
+text = "VOLVER AL MENÚ"
+
+[node name="VolumenLabel" type="Label" parent="."]
+modulate = Color(0.94902, 0.94902, 0.94902, 1)
+self_modulate = Color(0.94902, 0.94902, 0.94902, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -42.0
+offset_right = 64.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "VOLUMEN"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d51ns")
 volume_db = -15.0
 autoplay = true
 
-[node name="Custom" type="HBoxContainer" parent="."]
+[node name="CustomLayout" type="VBoxContainer" parent="."]
 visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -171.0
+offset_right = 243.5
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_q20sj")
+
+[node name="Custom" type="HBoxContainer" parent="CustomLayout"]
 layout_mode = 2
-offset_left = 248.0
-offset_top = 160.0
-offset_right = 936.0
-offset_bottom = 488.0
 alignment = 1
 
-[node name="Original" type="VBoxContainer" parent="Custom"]
+[node name="Original" type="VBoxContainer" parent="CustomLayout/Custom"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="Custom/Original"]
+[node name="Label" type="Label" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Original"
 
-[node name="original" type="CheckButton" parent="Custom/Original"]
+[node name="original" type="CheckButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="x" type="TextureButton" parent="Custom/Original"]
+[node name="x" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("5_lcunx")
 
-[node name="x_disabled" type="TextureButton" parent="Custom/Original"]
+[node name="x_disabled" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("6_dxr0t")
 
-[node name="o" type="TextureButton" parent="Custom/Original"]
+[node name="o" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("7_jdv5f")
 
-[node name="o_disabled" type="TextureButton" parent="Custom/Original"]
+[node name="o_disabled" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("8_1lal0")
 
-[node name="libre" type="TextureButton" parent="Custom/Original"]
+[node name="libre" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("9_liqya")
 
-[node name="libre_disabled" type="TextureButton" parent="Custom/Original"]
+[node name="libre_disabled" type="TextureButton" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("10_5snfi")
 
-[node name="VSeparator" type="VSeparator" parent="Custom"]
+[node name="VSeparator" type="VSeparator" parent="CustomLayout/Custom"]
 visibility_layer = 0
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="Princesa" type="VBoxContainer" parent="Custom"]
+[node name="Princesa" type="VBoxContainer" parent="CustomLayout/Custom"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Custom/Princesa"]
+[node name="Label" type="Label" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Princesa"
 
-[node name="princesa" type="CheckButton" parent="Custom/Princesa"]
+[node name="princesa" type="CheckButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="x" type="TextureButton" parent="Custom/Princesa"]
+[node name="x" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("11_tge4n")
 
-[node name="x_disabled" type="TextureButton" parent="Custom/Princesa"]
+[node name="x_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="o" type="TextureButton" parent="Custom/Princesa"]
+[node name="o" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("13_4l0p2")
 
-[node name="o_disabled" type="TextureButton" parent="Custom/Princesa"]
+[node name="o_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="libre" type="TextureButton" parent="Custom/Princesa"]
+[node name="libre" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("15_u5ojk")
 
-[node name="libre_disabled" type="TextureButton" parent="Custom/Princesa"]
+[node name="libre_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VSeparator2" type="VSeparator" parent="Custom"]
+[node name="VSeparator2" type="VSeparator" parent="CustomLayout/Custom"]
 visibility_layer = 0
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="Daltonicos" type="VBoxContainer" parent="Custom"]
+[node name="Daltonicos" type="VBoxContainer" parent="CustomLayout/Custom"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="Custom/Daltonicos"]
+[node name="Label" type="Label" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Daltonicos"
 
-[node name="daltonicos" type="CheckButton" parent="Custom/Daltonicos"]
+[node name="daltonicos" type="CheckButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="x" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="x" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("23_o7ly3")
 
-[node name="x_disabled" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="x_disabled" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("18_sl6ep")
 
-[node name="o" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="o" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("24_jofkq")
 
-[node name="o_disabled" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="o_disabled" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("20_qgm0p")
 
-[node name="libre" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="libre" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("21_fg1yj")
 
-[node name="libre_disabled" type="TextureButton" parent="Custom/Daltonicos"]
+[node name="libre_disabled" type="TextureButton" parent="CustomLayout/Custom/Daltonicos"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("22_omdpo")
 
-[node name="Volver3" type="Button" parent="Custom"]
+[node name="HSeparator" type="HSeparator" parent="CustomLayout"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Volver"
 
-[node name="IrAPersonalizado" type="Button" parent="Custom"]
+[node name="Volver3" type="Button" parent="CustomLayout"]
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Personalizar"
+text = "VOLVER"
+icon_alignment = 1
+
+[node name="IrAPersonalizado" type="Button" parent="CustomLayout"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "PERSONALIZAR"
 
 [node name="AjustesTexturas" type="VBoxContainer" parent="."]
 visible = false
@@ -318,7 +348,9 @@ grow_vertical = 2
 
 [node name="Label2" type="Label" parent="AjustesTexturas"]
 layout_mode = 2
-text = "Estética casillas jugadores"
+theme_override_font_sizes/font_size = 48
+text = "PERSONALIZAR CASILLAS"
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="AjustesTexturas"]
 visibility_layer = 0
@@ -353,7 +385,7 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="AjustesTexturas/CasillasJugadores/X"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Elije uno"
+text = "Elige uno"
 
 [node name="x1" type="TextureButton" parent="AjustesTexturas/CasillasJugadores/X"]
 layout_mode = 2
@@ -395,7 +427,7 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="AjustesTexturas/CasillasJugadores/O"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Elije uno"
+text = "Elige uno"
 
 [node name="o1" type="TextureButton" parent="AjustesTexturas/CasillasJugadores/O"]
 layout_mode = 2
@@ -418,20 +450,21 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="Volver2" type="Button" parent="AjustesTexturas"]
+custom_minimum_size = Vector2(440, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Volver"
 
-[connection signal="toggled" from="VBoxContainer/FullScreen" to="." method="_on_full_screen_toggled"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Volumen" to="." method="_on_volumen_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Volumen" to="." method="_on_volumen_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Accesibilidad" to="." method="_on_accesibilidad_pressed"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
-[connection signal="toggled" from="Custom/Original/original" to="." method="_on_original_toggled"]
-[connection signal="toggled" from="Custom/Princesa/princesa" to="." method="_on_princesa_toggled"]
-[connection signal="toggled" from="Custom/Daltonicos/daltonicos" to="." method="_on_daltonicos_toggled"]
-[connection signal="pressed" from="Custom/Volver3" to="." method="_on_volver_3_pressed"]
-[connection signal="pressed" from="Custom/IrAPersonalizado" to="." method="_on_ir_a_personalizado_pressed"]
+[connection signal="toggled" from="CustomLayout/Custom/Original/original" to="." method="_on_original_toggled"]
+[connection signal="toggled" from="CustomLayout/Custom/Princesa/princesa" to="." method="_on_princesa_toggled"]
+[connection signal="toggled" from="CustomLayout/Custom/Daltonicos/daltonicos" to="." method="_on_daltonicos_toggled"]
+[connection signal="pressed" from="CustomLayout/Volver3" to="." method="_on_volver_3_pressed"]
+[connection signal="pressed" from="CustomLayout/IrAPersonalizado" to="." method="_on_ir_a_personalizado_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x1" to="." method="_on_x_1_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x2" to="." method="_on_x_2_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x3" to="." method="_on_x_3_pressed"]

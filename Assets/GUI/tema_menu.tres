@@ -1,9 +1,13 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://iexdiuxut7gi"]
+[gd_resource type="Theme" load_steps=44 format=3 uid="uid://iexdiuxut7gi"]
 
 [ext_resource type="FontFile" uid="uid://dlvmd7pgj858b" path="res://Assets/GUI/Kenney Pixel.ttf" id="1_q7hk8"]
 [ext_resource type="Texture2D" uid="uid://nvc00u42h4cq" path="res://Assets/GUI/menu_button_hover.png" id="2_lofjd"]
 [ext_resource type="Texture2D" uid="uid://chy8rshapnryb" path="res://Assets/GUI/menu_button_up.png" id="3_qigib"]
 [ext_resource type="Texture2D" uid="uid://5fnhhs2q6f68" path="res://Assets/GUI/menu_button_down.png" id="4_0ux4e"]
+[ext_resource type="Texture2D" uid="uid://cdvgs8vbth3rw" path="res://Assets/Tiles/original/libre.png" id="5_qigib"]
+[ext_resource type="Texture2D" uid="uid://dd1q28kloq33q" path="res://Assets/Tiles/original/libre_down.png" id="6_0ux4e"]
+[ext_resource type="Texture2D" uid="uid://dmpq4e8c47imf" path="res://Assets/Tiles/original/libre_disabled.png" id="7_0ux4e"]
+[ext_resource type="Texture2D" uid="uid://ca1scdpirm5rp" path="res://Assets/GUI/slider_right.png" id="8_x8ide"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyk2x"]
 content_margin_left = 4.0
@@ -150,6 +154,52 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="ImageTexture" id="ImageTexture_q7hk8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwfwh"]
+content_margin_left = 18.0
+content_margin_top = 18.0
+content_margin_right = 18.0
+content_margin_bottom = 18.0
+texture = ExtResource("5_qigib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vf5xf"]
+texture = ExtResource("5_qigib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sge1"]
+texture = ExtResource("6_0ux4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x8ide"]
+texture = ExtResource("3_qigib")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_manip"]
+texture = ExtResource("2_lofjd")
+
+[sub_resource type="Image" id="Image_b3w62"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1m7xa"]
+image = SubResource("Image_b3w62")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5d714"]
+texture = ExtResource("8_x8ide")
+expand_margin_right = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w3he0"]
+texture = ExtResource("8_x8ide")
+expand_margin_right = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_51nu6"]
+texture = ExtResource("2_lofjd")
+texture_margin_right = 202.0
+texture_margin_bottom = 36.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1sge1"]
 
 [resource]
@@ -205,6 +255,26 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_sf5jw")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_sf5jw")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_sf5jw")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_sf5jw")
+HScrollBar/icons/decrement = SubResource("ImageTexture_q7hk8")
+HScrollBar/icons/decrement_highlight = SubResource("ImageTexture_q7hk8")
+HScrollBar/icons/decrement_pressed = SubResource("ImageTexture_q7hk8")
+HScrollBar/icons/increment = SubResource("ImageTexture_q7hk8")
+HScrollBar/icons/increment_highlight = SubResource("ImageTexture_q7hk8")
+HScrollBar/icons/increment_pressed = SubResource("ImageTexture_q7hk8")
+HScrollBar/styles/grabber = SubResource("StyleBoxTexture_wwfwh")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_vf5xf")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_1sge1")
+HScrollBar/styles/scroll = SubResource("StyleBoxTexture_x8ide")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_manip")
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("5_qigib")
+HSlider/icons/grabber_disabled = ExtResource("7_0ux4e")
+HSlider/icons/grabber_highlight = ExtResource("5_qigib")
+HSlider/icons/tick = SubResource("ImageTexture_1m7xa")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_5d714")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_w3he0")
+HSlider/styles/slider = SubResource("StyleBoxTexture_51nu6")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -213,6 +283,6 @@ Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 128
+Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_q7hk8")
 Label/styles/normal = SubResource("StyleBoxEmpty_1sge1")
