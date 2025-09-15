@@ -36,7 +36,7 @@ func _habilitar_tablero(habilitado : bool):
 				casillas[casilla].texture_disabled =  VarGlobales.libre_disabled
 
 
-func _inicio_tablero():	
+func _inicio_tablero():
 	tablero = [
 		"-", "-", "-",
 		"-", "-", "-",

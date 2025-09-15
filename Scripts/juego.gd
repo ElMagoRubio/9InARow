@@ -1,5 +1,6 @@
 extends Control
 
+
 #Control de los botones
 func _on_pausa_pressed():
 	get_tree().paused = true
@@ -60,7 +61,7 @@ func save():
 		"ganador_global": VarGlobales.ganador_global
 	}
 	save_game.store_line(JSON.stringify(dict))
-	save_game.close()	
+	save_game.close()
 	
 	var save_ajustes = FileAccess.open(VarGlobales.file_guardar_ajustes, FileAccess.WRITE)
 	var dict_ajustes =  {

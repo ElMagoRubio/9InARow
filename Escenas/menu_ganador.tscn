@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crhwurlaaipbd" path="res://Scripts/menu_ganador.gd" id="1_hkwp3"]
 [ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="1_p5jx0"]
-[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/tema_menu.tres" id="2_jbre6"]
+[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="2_jbre6"]
 
 [node name="menu_ganador" type="Control"]
 layout_mode = 3

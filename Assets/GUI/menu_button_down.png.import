@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1pdvqixu1nc3"
-path="res://.godot/imported/pausa.png-112ae21e8748762e1d5b30861d1c306f.ctex"
+uid="uid://5fnhhs2q6f68"
+path="res://.godot/imported/menu_button_down.png-cb30680e10f53d37724a4ab68501fba1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pausa.png"
-dest_files=["res://.godot/imported/pausa.png-112ae21e8748762e1d5b30861d1c306f.ctex"]
+source_file="res://Assets/GUI/menu_button_down.png"
+dest_files=["res://.godot/imported/menu_button_down.png-cb30680e10f53d37724a4ab68501fba1.ctex"]
 
 [params]
 

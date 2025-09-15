@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://bk6bepuij4xge"]
+[gd_scene load_steps=34 format=3 uid="uid://bk6bepuij4xge"]
 
-[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/tema_menu.tres" id="1_q20sj"]
+[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_q20sj"]
 [ext_resource type="Script" uid="uid://dmdfxeoryil8h" path="res://Scripts/menu_opciones.gd" id="1_xpu8d"]
 [ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="2_oomsj"]
-[ext_resource type="AudioStream" uid="uid://4bfbgdorf5sv" path="res://Assets/audio_menu.wav" id="4_d51ns"]
+[ext_resource type="AudioStream" uid="uid://4bfbgdorf5sv" path="res://Assets/audio/audio_menu.wav" id="4_d51ns"]
+[ext_resource type="Texture2D" uid="uid://5fnhhs2q6f68" path="res://Assets/GUI/menu_button_down.png" id="5_akyxm"]
 [ext_resource type="Texture2D" uid="uid://dkj7nl05ejdti" path="res://Assets/Tiles/original/x.png" id="5_lcunx"]
+[ext_resource type="Texture2D" uid="uid://chy8rshapnryb" path="res://Assets/GUI/menu_button_up.png" id="6_2h8q5"]
 [ext_resource type="Texture2D" uid="uid://cedf0titbyk5x" path="res://Assets/Tiles/original/x_disabled.png" id="6_dxr0t"]
 [ext_resource type="Texture2D" uid="uid://cqa4balc51neb" path="res://Assets/Tiles/original/o.png" id="7_jdv5f"]
 [ext_resource type="Texture2D" uid="uid://cybo6epgoj57m" path="res://Assets/Tiles/original/o_disabled.png" id="8_1lal0"]
@@ -20,6 +22,42 @@
 [ext_resource type="Texture2D" uid="uid://dc2804ufc0t6d" path="res://Assets/Tiles/daltonicos/x.png" id="23_o7ly3"]
 [ext_resource type="Texture2D" uid="uid://cwlh47t06vcyv" path="res://Assets/Tiles/daltonicos/o.png" id="24_jofkq"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n26qo"]
+load_path = "res://.godot/imported/menu_button_down.png-cb30680e10f53d37724a4ab68501fba1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gvyif"]
+texture = SubResource("CompressedTexture2D_n26qo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gujiu"]
+texture = SubResource("CompressedTexture2D_n26qo")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_akyxm"]
+load_path = "res://.godot/imported/menu_button_hover.png-db43d9624e5ed3326628d250494245e1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ciqo"]
+texture = SubResource("CompressedTexture2D_akyxm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80c4f"]
+texture = SubResource("CompressedTexture2D_n26qo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ay7g"]
+texture = ExtResource("6_2h8q5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7q3cm"]
+texture = SubResource("CompressedTexture2D_n26qo")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_un8t6"]
+load_path = "res://.godot/imported/menu_button_hover.png-db43d9624e5ed3326628d250494245e1.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqy0r"]
+texture = SubResource("CompressedTexture2D_un8t6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5iuc"]
+texture = ExtResource("5_akyxm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bo4l0"]
+texture = ExtResource("6_2h8q5")
+
 [node name="Menu_opciones" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -29,6 +67,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q20sj")
 script = ExtResource("1_xpu8d")
+
+[node name="BackgroundFondo" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(576, 324)
+scale = Vector2(0.240208, 0.24)
+texture = ExtResource("2_oomsj")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -49,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = -63.5
-offset_right = 102.0
-offset_bottom = 63.5
+offset_left = -202.0
+offset_top = -82.0
+offset_right = 202.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -76,19 +120,22 @@ max_value = 0.0
 
 [node name="Accesibilidad" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "ASPECTO DE LAS PIEZAS"
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gvyif")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gujiu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ciqo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_80c4f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7ay7g")
+text = "PIEZAS"
 expand_icon = true
 text_direction = 1
 
 [node name="Volver" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_7q3cm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bqy0r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q5iuc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bo4l0")
 text = "VOLVER AL MENÚ "
-
-[node name="BackgroundFondo" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(576, 324)
-scale = Vector2(0.240208, 0.24)
-texture = ExtResource("2_oomsj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d51ns")

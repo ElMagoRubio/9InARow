@@ -6,7 +6,7 @@ var ganador_global
 var cargar_guardado
 var guardado
 
-var file_guardar = "res://guardar.save"	# ruta al archivo donde se almacenan las cosas para guardar
+var file_guardar = "res://guardar.save" # ruta al archivo donde se almacenan las cosas para guardar
 var file_guardar_ajustes = "res://guardar_ajustes.save"
 
 var Tablero0 = []
@@ -103,6 +103,7 @@ func _init():
 
 func load_variables(turno, gan):
 	turno_jugador = turno
+	print("Turno del jugador " + turno)
 	ganador_global = gan
 
 func load_tablero(nombre, tablero, var1, var2, var3):
@@ -156,7 +157,7 @@ func load_tablero(nombre, tablero, var1, var2, var3):
 		gameoverfinal = var2
 		todos_habilitados = var1
 		ultima_jugada = var3
-
+		print("Tablero final:\nGame over: %s\nTodos habilitados: %s\nUltima jugada: %s" % [gameoverfinal, todos_habilitados, ultima_jugada])
 	
 
 func load_ajustes(x, x_d, o, o_d, l, l_d):

@@ -19,16 +19,16 @@ func _ready():
 	ultima_jugada = -1
 	if VarGlobales.cargar_guardado == true:
 		_load()
-		_habilitar_tableros()
 
 
 func _load():
 	tableros = VarGlobales.tablero_final
 	gameover = VarGlobales.gameoverfinal
 	todos_habilitados = VarGlobales.todos_habilitados
-	ultima_jugada = VarGlobales.ultima_jugada
+	ultima_jugada = int(VarGlobales.ultima_jugada)
+	_habilitar_tableros()
 
-func _inicio_tablero():	
+func _inicio_tablero():
 	tableros = [
 		"-", "-", "-",
 		"-", "-", "-",

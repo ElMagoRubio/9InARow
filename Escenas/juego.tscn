@@ -1,17 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw7vqxpdbh4c6"]
+[gd_scene load_steps=15 format=3 uid="uid://bw7vqxpdbh4c6"]
 
 [ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="1_gyt1b"]
 [ext_resource type="Script" uid="uid://3buhsa1po1b4" path="res://Scripts/juego.gd" id="1_h2eya"]
-[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/tema_menu.tres" id="1_nne6g"]
-[ext_resource type="Texture2D" uid="uid://b1pdvqixu1nc3" path="res://Assets/pausa.png" id="2_rnqnk"]
-[ext_resource type="FontFile" uid="uid://dlvmd7pgj858b" path="res://Assets/Kenney Pixel.ttf" id="3_rsg1s"]
+[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_nne6g"]
+[ext_resource type="Texture2D" uid="uid://b1pdvqixu1nc3" path="res://Assets/GUI/pausa.png" id="2_rnqnk"]
+[ext_resource type="FontFile" uid="uid://dlvmd7pgj858b" path="res://Assets/GUI/Kenney Pixel.ttf" id="3_rsg1s"]
 [ext_resource type="PackedScene" uid="uid://dtrjwu84kxkdt" path="res://Escenas/tablero.tscn" id="4_n0853"]
+[ext_resource type="Texture2D" uid="uid://di2p2xnw6ukk5" path="res://Assets/GUI/pausa_pressed.png" id="5_wqotv"]
 [ext_resource type="PackedScene" uid="uid://yk8lloe05yne" path="res://Escenas/tablero_final.tscn" id="5_xy31y"]
-[ext_resource type="AudioStream" uid="uid://dqc0gsji2fkp1" path="res://Assets/audio_partida.wav" id="7_mslk0"]
+[ext_resource type="AudioStream" uid="uid://dqc0gsji2fkp1" path="res://Assets/audio/audio_partida.wav" id="7_mslk0"]
 [ext_resource type="PackedScene" uid="uid://drgmikksr2el2" path="res://Escenas/ver_turnos.tscn" id="9_5dahl"]
 
 [sub_resource type="Theme" id="Theme_4uf4y"]
 default_font = ExtResource("3_rsg1s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fra74"]
+texture = ExtResource("2_rnqnk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bu8ox"]
+texture = ExtResource("5_wqotv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqotv"]
+texture = ExtResource("2_rnqnk")
 
 [node name="Juego" type="Control"]
 layout_mode = 3
@@ -47,10 +57,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.5
-offset_top = -98.0
-offset_right = 146.5
-offset_bottom = 98.0
+offset_left = -220.0
+offset_top = -117.5
+offset_right = 220.0
+offset_bottom = 117.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -62,7 +72,6 @@ text = "PAUSA
 
 [node name="botones" type="VBoxContainer" parent="menu_pausa/general"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="reanudar" type="Button" parent="menu_pausa/general/botones"]
@@ -123,7 +132,9 @@ offset_left = 9.0
 offset_top = 9.0
 offset_right = 49.0
 offset_bottom = 49.0
-icon = ExtResource("2_rnqnk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fra74")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bu8ox")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wqotv")
 expand_icon = true
 
 [node name="TablerosJuego" type="VBoxContainer" parent="."]

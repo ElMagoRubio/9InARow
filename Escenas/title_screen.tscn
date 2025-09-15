@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://2ehk4vahbam7"]
+
+[ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="1_767ca"]
+[ext_resource type="Script" uid="uid://bhibnnkxlpw7r" path="res://Scripts/title_screen.gd" id="1_bns7t"]
+[ext_resource type="Texture2D" uid="uid://sk2xja1qgwky" path="res://Assets/title_screen.png" id="2_bns7t"]
+[ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="3_2as8e"]
+
+[node name="Title screen" type="Node2D"]
+script = ExtResource("1_bns7t")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_767ca")
+
+[node name="Title" type="Sprite2D" parent="Background"]
+position = Vector2(66.6663, -325)
+scale = Vector2(2.82922, 2.82922)
+texture = ExtResource("2_bns7t")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 356.0
+offset_top = 480.0
+offset_right = 796.0
+offset_bottom = 516.0
+size_flags_vertical = 4
+theme = ExtResource("3_2as8e")
+text = "¡EMPEZAR!"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
