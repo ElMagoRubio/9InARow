@@ -7,14 +7,6 @@ func _ready():
 	pass
 
 
-func _on_volumen_value_changed(value):
-	AudioServer.set_bus_volume_db(master_bus, value)
-	
-	if value == -30:
-		AudioServer.set_bus_mute(master_bus, true)
-	else:
-		AudioServer.set_bus_mute(master_bus, false)
-
 func _on_accesibilidad_pressed():
 	$VBoxContainer.visible = false
 	$VolumenLabel.visible = false

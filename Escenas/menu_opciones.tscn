@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://bk6bepuij4xge"]
+[gd_scene load_steps=35 format=3 uid="uid://bk6bepuij4xge"]
 
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_q20sj"]
 [ext_resource type="Script" uid="uid://dmdfxeoryil8h" path="res://Scripts/menu_opciones.gd" id="1_xpu8d"]
 [ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="2_oomsj"]
 [ext_resource type="AudioStream" uid="uid://4bfbgdorf5sv" path="res://Assets/audio/audio_menu.wav" id="4_d51ns"]
+[ext_resource type="Script" uid="uid://diojl7rh7jjoi" path="res://Escenas/audio_slider.gd" id="4_n26qo"]
 [ext_resource type="Texture2D" uid="uid://5fnhhs2q6f68" path="res://Assets/GUI/menu_button_down.png" id="5_akyxm"]
 [ext_resource type="Texture2D" uid="uid://dkj7nl05ejdti" path="res://Assets/Tiles/original/x.png" id="5_lcunx"]
 [ext_resource type="Texture2D" uid="uid://chy8rshapnryb" path="res://Assets/GUI/menu_button_up.png" id="6_2h8q5"]
@@ -110,6 +111,10 @@ text = "PANTALLA COMPLETA"
 
 [node name="Volumen" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_n26qo")
+bus_name = "Master"
 
 [node name="Accesibilidad" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -457,7 +462,7 @@ size_flags_vertical = 8
 text = "Volver"
 
 [connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="value_changed" from="VBoxContainer/Volumen" to="." method="_on_volumen_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Volumen" to="VBoxContainer/Volumen" method="_on_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Accesibilidad" to="." method="_on_accesibilidad_pressed"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
 [connection signal="toggled" from="CustomLayout/Custom/Original/original" to="." method="_on_original_toggled"]
