@@ -5,7 +5,14 @@
 
 [node name="Tablero" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.131076
+anchor_bottom = 0.234568
+offset_left = -76.0
+offset_top = -76.0
+offset_right = -76.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0j1g2")
 
 [node name="tablero_base" type="VBoxContainer" parent="."]
@@ -78,12 +85,21 @@ layout_mode = 2
 texture_normal = ExtResource("2_uwcw6")
 stretch_mode = 0
 
+[connection signal="button_down" from="tablero_base/Fila0/Casilla0" to="." method="_on_casilla_0_button_down"]
 [connection signal="button_up" from="tablero_base/Fila0/Casilla0" to="." method="_on_casilla_0_button_up"]
+[connection signal="button_down" from="tablero_base/Fila0/Casilla1" to="." method="_on_casilla_1_button_down"]
 [connection signal="button_up" from="tablero_base/Fila0/Casilla1" to="." method="_on_casilla_1_button_up"]
+[connection signal="button_down" from="tablero_base/Fila0/Casilla2" to="." method="_on_casilla_2_button_down"]
 [connection signal="button_up" from="tablero_base/Fila0/Casilla2" to="." method="_on_casilla_2_button_up"]
+[connection signal="button_down" from="tablero_base/Fila1/Casilla3" to="." method="_on_casilla_3_button_down"]
 [connection signal="button_up" from="tablero_base/Fila1/Casilla3" to="." method="_on_casilla_3_button_up"]
+[connection signal="button_down" from="tablero_base/Fila1/Casilla4" to="." method="_on_casilla_4_button_down"]
 [connection signal="button_up" from="tablero_base/Fila1/Casilla4" to="." method="_on_casilla_4_button_up"]
+[connection signal="button_down" from="tablero_base/Fila1/Casilla5" to="." method="_on_casilla_5_button_down"]
 [connection signal="button_up" from="tablero_base/Fila1/Casilla5" to="." method="_on_casilla_5_button_up"]
+[connection signal="button_down" from="tablero_base/Fila2/Casilla6" to="." method="_on_casilla_6_button_down"]
 [connection signal="button_up" from="tablero_base/Fila2/Casilla6" to="." method="_on_casilla_6_button_up"]
+[connection signal="button_down" from="tablero_base/Fila2/Casilla7" to="." method="_on_casilla_7_button_down"]
 [connection signal="button_up" from="tablero_base/Fila2/Casilla7" to="." method="_on_casilla_7_button_up"]
+[connection signal="button_down" from="tablero_base/Fila2/Casilla8" to="." method="_on_casilla_8_button_down"]
 [connection signal="button_up" from="tablero_base/Fila2/Casilla8" to="." method="_on_casilla_8_button_up"]

@@ -1,51 +1,50 @@
 extends Control
 
+@onready var Tableros = $Tableros
+@onready var MenuGeneral = $menu_pausa/general
+@onready var MenuAjustes = $menu_opciones
+
+@onready var pausado = false
 
 #Control de los botones
 func _on_pausa_pressed():
-	get_tree().paused = true
-	_menu_pausa_visibilidad(true)
+	update_pause()
+	AudioGlobal.play_segment("return_button")
+	print("Pulsado botón pausa")
+	
+	print("Pausado: ", pausado, "  |  Ultima jugada: ", VarGlobales.ultima_jugada)
+	if (pausado == true and VarGlobales.ultima_jugada != -1):
+		print("Partida empezada, guardando...")
+		await save()  
+		VarGlobales.guardado = true
 
 func _on_reanudar_pressed():
-	_menu_pausa_visibilidad(false)
-	get_tree().paused = false
+	AudioGlobal.play_segment("return_button")
+	print("Reanudar")
+	update_pause()
 
 func _on_nueva_pressed():
+	AudioGlobal.play_segment("player_move")
 	get_tree().paused = false
 	VarGlobales.nueva()
 	get_tree().change_scene_to_file("res://Escenas/juego.tscn")
 
+func _on_ajustes_pressed() -> void:
+	AudioGlobal.play_segment("player_move")
+	Tableros.visible = false
+	MenuGeneral.visible = false
+	MenuAjustes.visible = true
+	
 
 func _on_salir_pressed():
-	if !VarGlobales.guardado:
-		$menu_pausa/general/botones.visible = false
-		$menu_pausa/general/conf_salida.visible = true
-	else:
-		get_tree().paused = false
-		get_tree().change_scene_to_file("res://Escenas/menu_principal.tscn")
-
-func _on_si_pressed():
+	AudioGlobal.play_segment("player_move")
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Escenas/menu_principal.tscn")
-
-func _on_no_pressed():
-	$menu_pausa/general/botones.visible = true
-	$menu_pausa/general/conf_salida.visible = false
-
-func _menu_pausa_visibilidad(pausado : bool):
-	$TablerosJuego.visible = !pausado
-	$TableroFinal.visible = !pausado
-	$menu_pausa/pausa.visible = !pausado
-	$menu_pausa/general.visible = pausado
+	var timer := get_tree().create_timer(0.1)
+	timer.timeout.connect(func():get_tree().change_scene_to_file("res://Escenas/menu_principal.tscn"))
 
 
-func _on_guardar_pressed():
-	save()
-	VarGlobales.guardado = true
-	$menu_pausa/general/botones/confirmacion.visible = true
-
-		
 func save():
+	print("Guardando partida...")
 	var save_game = FileAccess.open(VarGlobales.file_guardar, FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("tablero_juego")
 	for node in save_nodes:
@@ -63,18 +62,15 @@ func save():
 	save_game.store_line(JSON.stringify(dict))
 	save_game.close()
 	
-	var save_ajustes = FileAccess.open(VarGlobales.file_guardar_ajustes, FileAccess.WRITE)
-	var dict_ajustes =  {
-		"pantalla_completa": DisplayServer.window_get_mode(),
-		"audio_volumen": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
-		"x": VarGlobales.file_x,
-		"x_disabled": VarGlobales.file_x_d,
-		"o": VarGlobales.file_o,
-		"o_disabled": VarGlobales.file_o_d,
-		"libre": VarGlobales.file_l,
-		"libre_disabled": VarGlobales.file_l_d
-	}
-	save_ajustes.store_line(JSON.stringify(dict_ajustes))
-	save_ajustes.close()
+	print("Partida guardada")
+
+
+func update_pause():
+	pausado = !pausado
+	get_tree().paused = pausado
+	print("Estado de pausa: ", pausado)
 	
-		
+	Tableros.visible = !pausado
+	MenuGeneral.visible = pausado
+	MenuAjustes.visible = false
+	print("Tableros visibles: ", !pausado, "  |  Menu visible: ", pausado)

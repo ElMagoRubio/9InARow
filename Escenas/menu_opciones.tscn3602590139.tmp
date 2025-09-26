@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://bk6bepuij4xge"]
+[gd_scene load_steps=35 format=3 uid="uid://bk6bepuij4xge"]
 
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_q20sj"]
 [ext_resource type="Script" uid="uid://dmdfxeoryil8h" path="res://Scripts/menu_opciones.gd" id="1_xpu8d"]
-[ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/GUI/background_fondo.png" id="2_oomsj"]
-[ext_resource type="Script" uid="uid://diojl7rh7jjoi" path="res://Scripts/audio_slider.gd" id="4_n26qo"]
+[ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="2_oomsj"]
+[ext_resource type="AudioStream" uid="uid://4bfbgdorf5sv" path="res://Assets/audio/audio_menu.wav" id="4_d51ns"]
+[ext_resource type="Script" uid="uid://diojl7rh7jjoi" path="res://Escenas/audio_slider.gd" id="4_n26qo"]
 [ext_resource type="Texture2D" uid="uid://5fnhhs2q6f68" path="res://Assets/GUI/menu_button_down.png" id="5_akyxm"]
 [ext_resource type="Texture2D" uid="uid://dkj7nl05ejdti" path="res://Assets/Tiles/original/x.png" id="5_lcunx"]
 [ext_resource type="Texture2D" uid="uid://chy8rshapnryb" path="res://Assets/GUI/menu_button_up.png" id="6_2h8q5"]
@@ -14,10 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dmpq4e8c47imf" path="res://Assets/Tiles/original/libre_disabled.png" id="10_5snfi"]
 [ext_resource type="Texture2D" uid="uid://16gy6ck1xnd3" path="res://Assets/Tiles/princesa/x.png" id="11_tge4n"]
 [ext_resource type="Texture2D" uid="uid://b2x14quwkx47s" path="res://Assets/Tiles/princesa/o.png" id="13_4l0p2"]
-[ext_resource type="Texture2D" uid="uid://bu80sx1u8yo4s" path="res://Assets/Tiles/princesa/x_disabled.png" id="14_2h8q5"]
 [ext_resource type="Texture2D" uid="uid://csmmopdrnmn0s" path="res://Assets/Tiles/princesa/libre.png" id="15_u5ojk"]
-[ext_resource type="Texture2D" uid="uid://buruuqua0xcq7" path="res://Assets/Tiles/princesa/o_disabled.png" id="16_7q3cm"]
-[ext_resource type="Texture2D" uid="uid://w4y4m62jxsom" path="res://Assets/Tiles/princesa/libre_disabled.png" id="18_1ciqo"]
 [ext_resource type="Texture2D" uid="uid://u7gls452nxc0" path="res://Assets/Tiles/daltonicos/x_disabled.png" id="18_sl6ep"]
 [ext_resource type="Texture2D" uid="uid://3uvxj6ik404u" path="res://Assets/Tiles/daltonicos/o_disabled.png" id="20_qgm0p"]
 [ext_resource type="Texture2D" uid="uid://c46bmylbuftdl" path="res://Assets/Tiles/daltonicos/libre.png" id="21_fg1yj"]
@@ -62,7 +60,6 @@ texture = ExtResource("5_akyxm")
 texture = ExtResource("6_2h8q5")
 
 [node name="Menu_opciones" type="Control"]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,10 +81,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -94.0
+offset_left = -92.5
 offset_top = 70.0
-offset_right = 91.0
-offset_bottom = 106.0
+offset_right = 92.5
+offset_bottom = 100.0
 grow_horizontal = 2
 text = "AJUSTES"
 horizontal_alignment = 1
@@ -100,23 +97,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -202.0
-offset_top = -100.0
+offset_top = -82.0
 offset_right = 202.0
-offset_bottom = 100.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q20sj")
-
-[node name="Accesibilidad" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gvyif")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gujiu")
-theme_override_styles/hover = SubResource("StyleBoxTexture_1ciqo")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_80c4f")
-theme_override_styles/normal = SubResource("StyleBoxTexture_7ay7g")
-text = "PIEZAS"
-expand_icon = true
-text_direction = 1
 
 [node name="Fullscreen" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -129,6 +115,17 @@ max_value = 1.0
 step = 0.01
 script = ExtResource("4_n26qo")
 bus_name = "Master"
+
+[node name="Accesibilidad" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gvyif")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gujiu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1ciqo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_80c4f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7ay7g")
+text = "PIEZAS"
+expand_icon = true
+text_direction = 1
 
 [node name="Volver" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -148,13 +145,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.5
-offset_top = -20.0
+offset_top = -42.0
 offset_right = 64.5
-offset_bottom = 16.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = -5
 text = "VOLUMEN"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d51ns")
+volume_db = -15.0
+autoplay = true
 
 [node name="CustomLayout" type="VBoxContainer" parent="."]
 visible = false
@@ -180,7 +181,6 @@ alignment = 1
 [node name="Original" type="VBoxContainer" parent="CustomLayout/Custom"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme = ExtResource("1_q20sj")
 
 [node name="Label" type="Label" parent="CustomLayout/Custom/Original"]
 layout_mode = 2
@@ -247,7 +247,6 @@ texture_normal = ExtResource("11_tge4n")
 [node name="x_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("14_2h8q5")
 
 [node name="o" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
@@ -257,7 +256,6 @@ texture_normal = ExtResource("13_4l0p2")
 [node name="o_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("16_7q3cm")
 
 [node name="libre" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
@@ -267,7 +265,6 @@ texture_normal = ExtResource("15_u5ojk")
 [node name="libre_disabled" type="TextureButton" parent="CustomLayout/Custom/Princesa"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("18_1ciqo")
 
 [node name="VSeparator2" type="VSeparator" parent="CustomLayout/Custom"]
 visibility_layer = 0
@@ -324,13 +321,6 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 
-[node name="IrAPersonalizado" type="Button" parent="CustomLayout"]
-custom_minimum_size = Vector2(440, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "PERSONALIZAR"
-
 [node name="Volver3" type="Button" parent="CustomLayout"]
 custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
@@ -339,38 +329,42 @@ size_flags_vertical = 4
 text = "VOLVER"
 icon_alignment = 1
 
-[node name="AjustesTexturas" type="Control" parent="."]
+[node name="IrAPersonalizado" type="Button" parent="CustomLayout"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "PERSONALIZAR"
+
+[node name="AjustesTexturas" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
-anchor_left = 0.000434028
-anchor_right = 0.390191
-anchor_bottom = 0.936728
-offset_left = 356.5
-offset_top = 1.0
-offset_right = 396.5
-offset_bottom = 41.0
-metadata/_edit_use_anchors_ = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -152.0
+offset_right = 104.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="AjustesTexturas"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PERSONALIZAR CASILLAS"
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="AjustesTexturas"]
 visibility_layer = 0
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-offset_left = 224.5
-offset_top = 343.5
-offset_right = 664.5
-offset_bottom = 383.5
 
 [node name="CasillasJugadores" type="HBoxContainer" parent="AjustesTexturas"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -121.0
-offset_bottom = 121.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 6
+layout_mode = 2
+size_flags_vertical = 0
 alignment = 1
 
 [node name="X" type="VBoxContainer" parent="AjustesTexturas/CasillasJugadores"]
@@ -459,39 +453,23 @@ texture_normal = ExtResource("24_jofkq")
 visibility_layer = 0
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-offset_left = 224.5
-offset_top = 880.5
-offset_right = 664.5
-offset_bottom = 910.5
 
 [node name="Volver2" type="Button" parent="AjustesTexturas"]
 custom_minimum_size = Vector2(440, 36)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -244.5
-offset_top = 216.5
-offset_right = 195.5
-offset_bottom = 252.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "VOLVER"
+text = "Volver"
 
-[connection signal="pressed" from="VBoxContainer/Accesibilidad" to="." method="_on_accesibilidad_pressed"]
 [connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="drag_ended" from="VBoxContainer/Volumen" to="." method="_on_volumen_drag_ended"]
 [connection signal="value_changed" from="VBoxContainer/Volumen" to="VBoxContainer/Volumen" method="_on_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Accesibilidad" to="." method="_on_accesibilidad_pressed"]
 [connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
 [connection signal="toggled" from="CustomLayout/Custom/Original/original" to="." method="_on_original_toggled"]
 [connection signal="toggled" from="CustomLayout/Custom/Princesa/princesa" to="." method="_on_princesa_toggled"]
 [connection signal="toggled" from="CustomLayout/Custom/Daltonicos/daltonicos" to="." method="_on_daltonicos_toggled"]
-[connection signal="pressed" from="CustomLayout/IrAPersonalizado" to="." method="_on_ir_a_personalizado_pressed"]
 [connection signal="pressed" from="CustomLayout/Volver3" to="." method="_on_volver_3_pressed"]
+[connection signal="pressed" from="CustomLayout/IrAPersonalizado" to="." method="_on_ir_a_personalizado_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x1" to="." method="_on_x_1_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x2" to="." method="_on_x_2_pressed"]
 [connection signal="pressed" from="AjustesTexturas/CasillasJugadores/X/x3" to="." method="_on_x_3_pressed"]

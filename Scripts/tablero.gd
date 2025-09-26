@@ -1,48 +1,25 @@
 extends Control
 
-@onready var tablero_final = get_tree().get_first_node_in_group("tablero_final")
 @onready var tableros_juego = get_tree().get_nodes_in_group("tablero_juego")
+@onready var tablero_final = get_tree().get_first_node_in_group("tablero_final")
 @onready var ver_turnos = get_tree().get_first_node_in_group("ver_turno")
 
-var tablero : Array
-var casillas : Array
+@onready var tablero : Array
+@onready var casillas : Array
 
-var es_ganador = false
-var ganador = "-"
-var gameover = false
+@onready var es_ganador = false
+@onready var ganador = "-"
+@onready var gameover = false
+@onready var tablero_habilitado
 
 
 func _ready():
-	es_ganador = false
-	ganador = "-"
-	gameover = false
-	_inicio_tablero()
-	if VarGlobales.cargar_guardado == true:
-		_load()
-		VarGlobales.guardado = false
-	
-	_pinta_tablero()
-
-	
-func _habilitar_tablero(habilitado : bool):
-	for casilla in range(9):
-		casillas[casilla].set_disabled(!habilitado)
-		if (!habilitado):
-			if (tablero[casilla] == "x"):
-				casillas[casilla].texture_disabled = VarGlobales.jugador_x_disabled
-			elif(tablero[casilla] == "o"):
-				casillas[casilla].texture_disabled =  VarGlobales.jugador_o_disabled
-			else:
-				casillas[casilla].texture_disabled =  VarGlobales.libre_disabled
-
-
-func _inicio_tablero():
+	print("\nTablero iniciado")
 	tablero = [
 		"-", "-", "-",
 		"-", "-", "-",
 		"-", "-", "-"
 	]
-	
 	casillas = [
 		$tablero_base/Fila0/Casilla0,
 		$tablero_base/Fila0/Casilla1,
@@ -54,8 +31,32 @@ func _inicio_tablero():
 		$tablero_base/Fila2/Casilla7,
 		$tablero_base/Fila2/Casilla8
 	]
+	if VarGlobales.cargar_guardado == true:
+		_load()
+	else:
+		tablero_habilitado = true
+	_habilitar_tablero(tablero_habilitado)
+	
 	_pinta_tablero()
-	_habilitar_tablero(true)
+
+	
+func _habilitar_tablero(habilitado : bool):
+	tablero_habilitado = habilitado
+	print("Tablero habilitado: ", tablero_habilitado)
+	var i = 0
+	for casilla in casillas:
+		print("Casilla ", casilla)
+		casilla.set_disabled(!tablero_habilitado)
+		if (!tablero_habilitado):
+			print("Deshabilitando casilla ", casilla)
+			if (tablero[i] == "x"):
+				casilla.texture_disabled = VarGlobales.jugador_x_disabled
+			elif(tablero[i] == "o"):
+				casilla.texture_disabled =  VarGlobales.jugador_o_disabled
+			else:
+				casillas[i].texture_disabled =  VarGlobales.libre_disabled
+		i += 1
+
 
 func save():
 	var dict = {
@@ -77,10 +78,10 @@ func save():
 	return dict
 
 func _load():
+	print("Cargando tablero...")
 	var tableros = get_tree().get_nodes_in_group("tablero_juego")
 	for i in range(9):
 		var nombre = tableros[i].get_name()
-		print(nombre)
 		if nombre == get_name():
 			if get_name() == "Tablero0":
 				tableros[i].tablero = VarGlobales.Tablero0
@@ -127,9 +128,12 @@ func _load():
 				es_ganador = VarGlobales.es_ganador[8]
 				ganador = VarGlobales.ganador[8]
 				gameover = VarGlobales.gameover[8]
+		
+	print(get_name(), " cargado")
 
 
 func _pinta_tablero():
+	print("Pintando tablero...")
 	for casilla in range(9):
 		if tablero[casilla] == "-":
 			casillas[casilla].texture_normal =  VarGlobales.libre
@@ -142,6 +146,7 @@ func _pinta_tablero():
 func _mover(casilla : int):
 	tablero[casilla] = VarGlobales.turno_jugador
 	tablero_final.ultima_jugada = casilla
+	VarGlobales.ultima_jugada = tablero_final.ultima_jugada
 	_pinta_tablero()
 	_gameover()
 
@@ -215,6 +220,11 @@ func _gameover() -> bool:
 	return gameover
 
 
+func _on_casilla_0_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[0]== "-"):
+		casillas[0].texture_normal =  VarGlobales.libre_pressed
+
 func _on_casilla_0_button_up():
 	if (tablero[0]== "-"):
 		_mover(0)
@@ -230,6 +240,12 @@ func _on_casilla_0_button_up():
 					tablero_final._habilitar_tableros()
 				
 		_cambio_turno()
+
+
+func _on_casilla_1_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[1]== "-"):
+		casillas[1].texture_normal =  VarGlobales.libre_pressed
 
 func _on_casilla_1_button_up():
 	if (tablero[1]== "-"):
@@ -247,6 +263,12 @@ func _on_casilla_1_button_up():
 					
 		_cambio_turno()
 
+
+func _on_casilla_2_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[2]== "-"):
+		casillas[2].texture_normal =  VarGlobales.libre_pressed
+
 func _on_casilla_2_button_up():
 	if (tablero[2]== "-"):
 		_mover(2)
@@ -262,6 +284,12 @@ func _on_casilla_2_button_up():
 					tablero_final._habilitar_tableros()
 					
 		_cambio_turno()
+
+
+func _on_casilla_3_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[3]== "-"):
+		casillas[3].texture_normal =  VarGlobales.libre_pressed
 
 func _on_casilla_3_button_up():
 	if (tablero[3]== "-"):
@@ -279,6 +307,12 @@ func _on_casilla_3_button_up():
 					
 		_cambio_turno()
 
+
+func _on_casilla_4_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[4]== "-"):
+		casillas[4].texture_normal =  VarGlobales.libre_pressed
+
 func _on_casilla_4_button_up():
 	if (tablero[4]== "-"):
 		_mover(4)
@@ -295,6 +329,12 @@ func _on_casilla_4_button_up():
 					
 		_cambio_turno()
 
+
+func _on_casilla_5_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[5]== "-"):
+		casillas[5].texture_normal =  VarGlobales.libre_pressed
+
 func _on_casilla_5_button_up():
 	if (tablero[5]== "-"):
 		_mover(5)
@@ -310,7 +350,13 @@ func _on_casilla_5_button_up():
 					tablero_final._habilitar_tableros()
 					
 		_cambio_turno()
-	
+
+
+func _on_casilla_6_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[6]== "-"):
+		casillas[6].texture_normal =  VarGlobales.libre_pressed
+		
 func _on_casilla_6_button_up():
 	if (tablero[6]== "-"):
 		_mover(6)
@@ -327,6 +373,12 @@ func _on_casilla_6_button_up():
 					
 		_cambio_turno()
 
+
+func _on_casilla_7_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[7]== "-"):
+		casillas[7].texture_normal =  VarGlobales.libre_pressed
+
 func _on_casilla_7_button_up():
 	if (tablero[7]== "-"):
 		_mover(7)
@@ -342,6 +394,12 @@ func _on_casilla_7_button_up():
 					tablero_final._habilitar_tableros()
 					
 		_cambio_turno()
+
+
+func _on_casilla_8_button_down() -> void:
+	AudioGlobal.play_segment("player_move")
+	if (tablero[8]== "-"):
+		casillas[8].texture_normal =  VarGlobales.libre_pressed
 
 func _on_casilla_8_button_up():
 	if (tablero[8]== "-"):

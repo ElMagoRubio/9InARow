@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://drgmikksr2el2"]
+[gd_scene load_steps=5 format=3 uid="uid://drgmikksr2el2"]
 
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_f2pa7"]
 [ext_resource type="Script" uid="uid://cmaotjn3x6xkq" path="res://Scripts/ver_turnos.gd" id="2_15gbu"]
+[ext_resource type="Texture2D" uid="uid://tyd7nmcrys1" path="res://Assets/GUI/label.png" id="3_e8ut2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fu21f"]
+texture = ExtResource("3_e8ut2")
 
 [node name="ver_turnos" type="Control"]
 layout_mode = 3
@@ -15,18 +19,23 @@ theme = ExtResource("1_f2pa7")
 script = ExtResource("2_15gbu")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_right = 193.0
-offset_bottom = 48.0
+offset_right = 168.0
+offset_bottom = 102.0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_f2pa7")
 theme_override_font_sizes/font_size = 64
-text = "TURNO: "
+theme_override_styles/normal = SubResource("StyleBoxTexture_fu21f")
+text = "   TURNO   "
 
-[node name="Casilla0" type="TextureButton" parent="HBoxContainer"]
+[node name="Casilla0" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
+size_flags_vertical = 10
 stretch_mode = 0

@@ -1,5 +1,8 @@
 extends Node
 
+var volumen
+var fullscreen
+
 var turno_jugador
 var ganador_global
 
@@ -29,6 +32,7 @@ var ultima_jugada
 
 # texturas
 var libre
+var libre_pressed
 var libre_disabled
 var jugador_x 
 var jugador_x_disabled 
@@ -38,6 +42,7 @@ var completa
 var empate
 
 var file_l
+var file_l_p
 var file_l_d
 var file_x
 var file_x_d
@@ -50,10 +55,10 @@ func _ready():
 	turno_jugador = "o"
 	ganador_global = null
 	cargar_guardado = false
-	guardado = false
-	
+	guardado = FileAccess.file_exists("res://guardar.save")
 	
 	file_l = "res://Assets/Tiles/original/libre.png"
+	file_l_p = "res://Assets/Tiles/original/libre_pressed.png"
 	file_l_d = "res://Assets/Tiles/original/libre_disabled.png"
 	file_x = "res://Assets/Tiles/original/x.png"
 	file_x_d = "res://Assets/Tiles/original/x_disabled.png"
@@ -62,6 +67,7 @@ func _ready():
 
 
 	libre = load(file_l)
+	libre_pressed = load(file_l_p)
 	libre_disabled = load(file_l_d)
 	jugador_x = load(file_x)
 	jugador_x_disabled = load(file_x_d)
@@ -76,10 +82,14 @@ func nueva():
 	turno_jugador = "o"
 	ganador_global = null
 	cargar_guardado = false
-	guardado = false
-	var file = FileAccess.open("res://guardar.save", FileAccess.WRITE)
-	file.close()
+	delete_save_file()
 	
+
+
+func delete_save_file():
+	print("\n\n\n*********** Archivo de guardado borrado ***********\n\n\n")
+	var file = DirAccess.remove_absolute("res://guardar.save")
+	guardado = false
 
 func _init():
 	for i in range(9):

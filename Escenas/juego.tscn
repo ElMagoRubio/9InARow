@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw7vqxpdbh4c6"]
+[gd_scene load_steps=16 format=3 uid="uid://bw7vqxpdbh4c6"]
 
-[ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/background_fondo.png" id="1_gyt1b"]
+[ext_resource type="Texture2D" uid="uid://sxtkshn53eat" path="res://Assets/GUI/background_fondo.png" id="1_gyt1b"]
 [ext_resource type="Script" uid="uid://3buhsa1po1b4" path="res://Scripts/juego.gd" id="1_h2eya"]
 [ext_resource type="Theme" uid="uid://iexdiuxut7gi" path="res://Assets/GUI/tema_menu.tres" id="1_nne6g"]
 [ext_resource type="Texture2D" uid="uid://b1pdvqixu1nc3" path="res://Assets/GUI/pausa.png" id="2_rnqnk"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dtrjwu84kxkdt" path="res://Escenas/tablero.tscn" id="4_n0853"]
 [ext_resource type="Texture2D" uid="uid://di2p2xnw6ukk5" path="res://Assets/GUI/pausa_pressed.png" id="5_wqotv"]
 [ext_resource type="PackedScene" uid="uid://yk8lloe05yne" path="res://Escenas/tablero_final.tscn" id="5_xy31y"]
-[ext_resource type="AudioStream" uid="uid://dqc0gsji2fkp1" path="res://Assets/audio/audio_partida.wav" id="7_mslk0"]
+[ext_resource type="PackedScene" uid="uid://bk6bepuij4xge" path="res://Escenas/menu_opciones.tscn" id="7_wqotv"]
 [ext_resource type="PackedScene" uid="uid://drgmikksr2el2" path="res://Escenas/ver_turnos.tscn" id="9_5dahl"]
 
 [sub_resource type="Theme" id="Theme_4uf4y"]
 default_font = ExtResource("3_rsg1s")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_va84l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fra74"]
 texture = ExtResource("2_rnqnk")
@@ -51,6 +53,8 @@ theme = SubResource("Theme_4uf4y")
 
 [node name="general" type="VBoxContainer" parent="menu_pausa"]
 visible = false
+visibility_layer = 3
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,17 +62,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -220.0
-offset_top = -117.5
+offset_top = -260.0
 offset_right = 220.0
-offset_bottom = 117.5
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="pausa_texto" type="Label" parent="menu_pausa/general"]
+custom_minimum_size = Vector2(168, 48)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "PAUSA
-"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_va84l")
+text = "PAUSA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="botones" type="VBoxContainer" parent="menu_pausa/general"]
 layout_mode = 2
@@ -76,168 +83,150 @@ size_flags_vertical = 6
 
 [node name="reanudar" type="Button" parent="menu_pausa/general/botones"]
 layout_mode = 2
-text = "Reanudar partida"
+text = "REANUDAR"
 
 [node name="nueva" type="Button" parent="menu_pausa/general/botones"]
 layout_mode = 2
-text = "Nueva partida"
+text = "REINICIAR PARTIDA"
 
-[node name="guardar" type="Button" parent="menu_pausa/general/botones"]
+[node name="ajustes" type="Button" parent="menu_pausa/general/botones"]
+process_mode = 3
 layout_mode = 2
-text = "Guardar partida"
+text = "AJUSTES"
 
 [node name="salir" type="Button" parent="menu_pausa/general/botones"]
 layout_mode = 2
-text = "Ir al menú principal"
+text = "VOLVER AL MENÚ"
 
-[node name="confirmacion" type="Label" parent="menu_pausa/general/botones"]
-visible = false
-layout_mode = 2
-text = "Partida guardada"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="conf_salida" type="VBoxContainer" parent="menu_pausa/general"]
-visible = false
-clip_children = 1
-clip_contents = true
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="conf_salida_texto" type="Label" parent="menu_pausa/general/conf_salida"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "¿Salir sin guardar?"
-
-[node name="si_no" type="HBoxContainer" parent="menu_pausa/general/conf_salida"]
+[node name="HSeparator" type="HSeparator" parent="menu_pausa/general/botones"]
+visibility_layer = 0
+custom_minimum_size = Vector2(10, 30)
 layout_mode = 2
 
-[node name="si" type="Button" parent="menu_pausa/general/conf_salida/si_no"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Salir sin guardar"
-
-[node name="no" type="Button" parent="menu_pausa/general/conf_salida/si_no"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-text = "Cancelar"
-
-[node name="pausa" type="Button" parent="menu_pausa"]
-process_mode = 1
+[node name="boton_pausa" type="Button" parent="menu_pausa"]
+process_mode = 3
+top_level = true
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-offset_left = 9.0
-offset_top = 9.0
-offset_right = 49.0
-offset_bottom = 49.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1121.0
+offset_top = 15.0
+offset_right = -1073.0
+offset_bottom = 63.0
+grow_horizontal = 0
 theme_override_styles/hover = SubResource("StyleBoxTexture_fra74")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bu8ox")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wqotv")
 expand_icon = true
 
-[node name="TablerosJuego" type="VBoxContainer" parent="."]
+[node name="menu_opciones" parent="." instance=ExtResource("7_wqotv")]
+visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.086
-anchor_right = 0.458
-anchor_bottom = 0.988
-offset_left = 0.575996
-offset_top = -7.728
-offset_right = 0.383972
-offset_bottom = -0.223999
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Fila0" type="HBoxContainer" parent="TablerosJuego"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Tablero0" parent="TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-
-[node name="Tablero1" parent="TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Tablero2" parent="TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-
-[node name="Fila1" type="HBoxContainer" parent="TablerosJuego"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Tablero3" parent="TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-
-[node name="Tablero4" parent="TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Tablero5" parent="TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-
-[node name="Fila2" type="HBoxContainer" parent="TablerosJuego"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Tablero6" parent="TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-
-[node name="Tablero7" parent="TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Tablero8" parent="TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-
-[node name="TableroFinal" parent="." groups=["tablero_final"] instance=ExtResource("5_xy31y")]
-offset_left = 808.0
-offset_top = 232.0
-offset_right = 808.0
-offset_bottom = 232.0
-scale = Vector2(1.69313, 1.69313)
 
 [node name="ver_turnos" parent="." groups=["ver_turno"] instance=ExtResource("9_5dahl")]
 layout_mode = 1
-anchor_left = 0.715278
-anchor_top = 0.0740741
-anchor_right = 0.826389
-anchor_bottom = 0.148148
+anchor_left = 0.124132
+anchor_top = 0.121913
+anchor_right = 0.235243
+anchor_bottom = 0.195987
 offset_right = -128.0
 offset_bottom = -47.9999
 
-[node name="Audio_partida" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_mslk0")
-volume_db = -15.0
-autoplay = true
+[node name="Tableros" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TableroFinal" parent="Tableros" groups=["tablero_final"] instance=ExtResource("5_xy31y")]
+offset_left = 96.0001
+offset_top = 252.0
+offset_right = 96.0001
+offset_bottom = 252.0
+scale = Vector2(1.69313, 1.69313)
+
+[node name="TablerosJuego" type="VBoxContainer" parent="Tableros"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -246.0
+offset_right = 352.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Fila0" type="HBoxContainer" parent="Tableros/TablerosJuego"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Tablero0" parent="Tableros/TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Tablero1" parent="Tableros/TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Tablero2" parent="Tableros/TablerosJuego/Fila0" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="Fila1" type="HBoxContainer" parent="Tableros/TablerosJuego"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Tablero3" parent="Tableros/TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Tablero4" parent="Tableros/TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Tablero5" parent="Tableros/TablerosJuego/Fila1" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="Fila2" type="HBoxContainer" parent="Tableros/TablerosJuego"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Tablero6" parent="Tableros/TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Tablero7" parent="Tableros/TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Tablero8" parent="Tableros/TablerosJuego/Fila2" groups=["tablero_juego"] instance=ExtResource("4_n0853")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
 
 [connection signal="pressed" from="menu_pausa/general/botones/reanudar" to="." method="_on_reanudar_pressed"]
 [connection signal="pressed" from="menu_pausa/general/botones/nueva" to="." method="_on_nueva_pressed"]
-[connection signal="pressed" from="menu_pausa/general/botones/guardar" to="." method="_on_guardar_pressed"]
+[connection signal="pressed" from="menu_pausa/general/botones/ajustes" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="menu_pausa/general/botones/salir" to="." method="_on_salir_pressed"]
-[connection signal="pressed" from="menu_pausa/general/conf_salida/si_no/si" to="." method="_on_si_pressed"]
-[connection signal="pressed" from="menu_pausa/general/conf_salida/si_no/no" to="." method="_on_no_pressed"]
-[connection signal="pressed" from="menu_pausa/pausa" to="." method="_on_pausa_pressed"]
+[connection signal="pressed" from="menu_pausa/boton_pausa" to="." method="_on_pausa_pressed"]

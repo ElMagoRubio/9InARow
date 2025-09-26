@@ -22,10 +22,12 @@ func _ready():
 
 
 func _load():
+	print("Cargando tablero final")
 	tableros = VarGlobales.tablero_final
 	gameover = VarGlobales.gameoverfinal
 	todos_habilitados = VarGlobales.todos_habilitados
 	ultima_jugada = int(VarGlobales.ultima_jugada)
+	print("Ultima jugada: ", ultima_jugada)
 	_habilitar_tableros()
 
 func _inicio_tablero():
@@ -77,9 +79,12 @@ func _habilitar_tableros():
 	if !todos_habilitados:
 		for i in range(9):
 			nombre_tablero = tableros_memoria[i].get_name()
+			print("\n\nTablero: ", nombre_tablero)
 			if nombre_tablero.ends_with(str(ultima_jugada)):
+				print("Tablero ", nombre_tablero, " habilitado")
 				tableros_memoria[i]._habilitar_tablero(true)
 			else:
+				print("Tablero ", nombre_tablero, " inhabilitado")
 				tableros_memoria[i]._habilitar_tablero(false)
 	else:
 		for i in range(9):

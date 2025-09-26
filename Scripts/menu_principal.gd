@@ -1,19 +1,29 @@
 extends Control
 
+@onready var guardado = VarGlobales.guardado
+
+func _process(delta):
+	$VBoxContainer/Reanudar.visible = FileAccess.file_exists("res://guardar.save")
+
+
 func _on_jugar_pressed():
+	AudioGlobal.play_segment("player_move")
 	VarGlobales.nueva()
 	get_tree().change_scene_to_file("res://Escenas/juego.tscn")
 
 
 func _on_salir_pressed():
+	AudioGlobal.play_segment("player_move")
 	get_tree().quit()
 
 
 func _on_opciones_pressed():
+	AudioGlobal.play_segment("player_move")
 	get_tree().change_scene_to_file("res://Escenas/menu_opciones.tscn")
 
 
 func _on_reanudar_pressed():
+	AudioGlobal.play_segment("player_move")
 	_load()
 	VarGlobales.cargar_guardado = true
 	get_tree().change_scene_to_file("res://Escenas/juego.tscn")
@@ -46,34 +56,3 @@ func _load():
 		var dir = DirAccess.open("res://")
 		dir.remove(VarGlobales.file_guardar)
 	
-		
-	if FileAccess.file_exists(VarGlobales.file_guardar_ajustes):
-		var file_ajustes = FileAccess.open(VarGlobales.file_guardar_ajustes, FileAccess.READ)
-		while file_ajustes.get_position() < file_ajustes.get_length():
-			var json_string = file_ajustes.get_line()
-			var json = JSON.new()
-			var _parse_result = json.parse(json_string)
-			var data = json.get_data()
-			DisplayServer.window_set_mode(data["pantalla_completa"])
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), data["audio_volumen"])
-			VarGlobales.load_ajustes(data["x"], data["x_disabled"], data["o"], data["o_disabled"], data["libre"], data["libre_disabled"])
-			"""VarGlobales.jugador_o = data["o"]
-			VarGlobales.jugador_o_disabled = data["o_disabled"]
-			VarGlobales.jugador_x = data["x"]
-			VarGlobales.jugador_x_disabled = data["x_disabled"]
-			VarGlobales.libre = data["libre"]
-			VarGlobales.libre_disabled = data["libre_disabled"]"""
-		file_ajustes.close()
-		var dir = DirAccess.open("res://")
-		dir.remove(VarGlobales.file_guardar_ajustes)
-
-func _process(_delta):
-	if VarGlobales.guardado == true:
-		$VBoxContainer/Reanudar.visible = true
-	else:
-		if FileAccess.file_exists(VarGlobales.file_guardar) and FileAccess.file_exists(VarGlobales.file_guardar_ajustes):
-			VarGlobales.guardado == true
-			$VBoxContainer/Reanudar.visible = true
-		else:
-			$VBoxContainer/Reanudar.visible = false
-		

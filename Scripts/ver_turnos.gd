@@ -6,6 +6,6 @@ func _ready():
 
 func _cambia_turno():
 	if VarGlobales.turno_jugador == "o":
-		$HBoxContainer/Casilla0.texture_normal = VarGlobales.jugador_o
+		$VBoxContainer/Casilla0.texture_normal = VarGlobales.jugador_o
 	elif VarGlobales.turno_jugador == "x":
-		$HBoxContainer/Casilla0.texture_normal = VarGlobales.jugador_x
+		$VBoxContainer/Casilla0.texture_normal = VarGlobales.jugador_x
